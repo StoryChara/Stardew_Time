@@ -1,23 +1,17 @@
-let tiempoInicio;
-
-// Cargar la hora de inicio desde el localStorage o establecerla si no existe
-if (localStorage.getItem('tiempoInicio')) {
-    tiempoInicio = parseFloat(localStorage.getItem('tiempoInicio'));
-} else {
-    // Establecer el tiempo actual como el tiempo de inicio
-    tiempoInicio = Date.now();
-    localStorage.setItem('tiempoInicio', tiempoInicio);
-}
+// Definimos el "momento inicial" desde el cual comienza el reloj (puedes cambiar esta fecha)
+const momentoInicial = new Date('2024-09-01T00:00:00Z').getTime(); // Momento inicial en UTC
 
 function mostrarHora() {
     const reloj = document.getElementById('reloj');
     
-    // Obtener el tiempo actual y calcular el tiempo transcurrido desde el inicio
+    // Obtén el tiempo actual
     const tiempoActual = Date.now();
-    const tiempoTranscurrido = tiempoActual - tiempoInicio;
+    
+    // Calcula el tiempo transcurrido desde el "momento inicial"
+    const tiempoTranscurrido = tiempoActual - momentoInicial;
 
-    // Calcular los segundos virtuales (1 segundo virtual cada 2 segundos reales)
-    const segundosVirtuales = (tiempoTranscurrido / 1000) / 2; // Dividimos por 2 para que el reloj avance más lento
+    // El tiempo virtual transcurre a la mitad de la velocidad real (dividimos por 2)
+    const segundosVirtuales = (tiempoTranscurrido / 1000) / 2;
 
     // Calculamos las horas, minutos y segundos virtuales
     const horas = Math.floor(segundosVirtuales / 3600) % 24;
@@ -35,3 +29,4 @@ function mostrarHora() {
 
 // Actualizamos el reloj cada segundo real
 setInterval(mostrarHora, 1000);
+
