@@ -31,13 +31,13 @@
       font-family: "StardewFont";
       color: #6a1f16;
       text-align: center;
-      font-size: 4rem; 
+      font-size: 3rem; 
       margin-bottom: 20px;
       text-shadow: 3px 3px 6px rgba(52, 13, 12, 0.267);
     }
 
     .clock {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #6a1f16;
       font-family: "PixelatedElegance";
       text-align: center;
@@ -52,7 +52,7 @@
     }
 
     .clock i {
-  font-size: 1.75rem; 
+  font-size: 1.5rem; 
 }
 
     @keyframes pulse {
@@ -141,7 +141,8 @@ let clima; let suerte;
     });
     
     document.getElementById("clock").innerHTML = `${days[actualDay]} ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br> 
-                                                  ${seasons[seasonIndex]}, ${weather[clima]} <br>
+                                                  ${seasons[seasonIndex]} <br>
+                                                  ${weather[clima]} <br>
                                                   ${lucky[suerte]}`;
   }
 
