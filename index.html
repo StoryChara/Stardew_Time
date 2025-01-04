@@ -140,8 +140,8 @@ let clima; let suerte;
       console.error('--');
     });
     
-    document.getElementById("clock").innerHTML = `${days[actualDay]} ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br> 
-                                                  ${seasons[seasonIndex]} <br>
+    document.getElementById("clock").innerHTML = `${seasons[seasonIndex]} <br>
+                                                  ${days[actualDay]} ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br>                                               
                                                   ${weather[clima]} <br>
                                                   ${lucky[suerte]}`;
   }
