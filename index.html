@@ -36,19 +36,24 @@
       text-shadow: 3px 3px 6px rgba(52, 13, 12, 0.267);
     }
 
-    .clock{
-      font-size: 3rem;
+    .clock {
+      font-size: 2.5rem;
       color: #6a1f16;
       font-family: "PixelatedElegance";
       text-align: center;
-      padding: 12px;
-      margin: 10px;
+      padding: 10px;
+      margin: 25px 75px;
+      width: 75%;
       border: 1px solid rgb(58, 18, 0);
       border-radius: 1px;
       background-color: rgba(255, 225, 225, 0.479); 
       box-shadow: 0 4px 8px rgba(58, 18, 0, 0.521);
       animation: pulse 2s infinite;
     }
+
+    .clock i {
+  font-size: 1.75rem; 
+}
 
     @keyframes pulse {
       0%, 100% {
@@ -62,7 +67,7 @@
 </head>
 <body>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <h1 id="titulo"><i class="fa-solid fa-signs-post"></i><br> Hora Actual en<br>Pueblo Pelicano </h1>
+  <h1 id="titulo"><i class="fa-solid fa-signs-post"></i><br> Bienvenido a <br> Pueblo Pelicano </h1>
 
   <div class="clock" id="clock">...</div>
 </body>
@@ -76,6 +81,33 @@
                     'Otoño <i class="fa-brands fa-canadian-maple-leaf"></i>',
                     'Invierno <i class="fa-regular fa-snowflake"></i>' ];
 
+  const days = [  'Lunes',
+                  'Martes',
+                  'Miércoles',
+                  'Jueves',
+                  'Viernes',
+                  'Sábado',
+                  'Domingo' ];
+
+  const weather = [ '--',
+                    'Soleado <i class="fa-solid fa-sun"></i>',
+                    'Lluvioso <i class="fa-solid fa-cloud-showers-heavy"></i>',
+                    'Viento <i class="fa-solid fa-wind"></i>',
+                    'Nublado <i class="fa-solid fa-cloud-sun"></i>',
+                    'Tormenta <i class="fa-solid fa-cloud-bolt"></i>',
+                    'Nevado <i class="fa-solid fa-snowflake"></i>',
+                    'Lluvia Verde <i class="fa-solid fa-exclamation"></i>',
+                    'Lluvia Ácida <i class="fa-solid fa-triangle-exclamation"></i>'];
+
+  const lucky = [ '--',
+                  'Los espíritus están muy felices <i class="fa-regular fa-face-laugh-beam"></i>',
+                  'Los espíritus están de buen humor <i class="fa-regular fa-face-smile-beam"></i>',
+                  'Los espíritus están neutros <i class="fa-regular fa-face-meh"></i>',
+                  'Los espíritus están molestos <i class="fa-regular fa-face-frown-open"></i>',
+                  'Los espíritus están muy descontentos <i class="fa-regular fa-face-frown"></i>' ];
+
+let clima; let suerte;
+
   function updateClock() {
     const nowReal = new Date().getTime();
     const elapsedReal = nowReal - startTime;
@@ -88,10 +120,29 @@
 
     const totalDaysElapsed = Math.floor(elapsedSimulated / (1000 * 60 * 60 * 24));
     const dayOfMonth = (totalDaysElapsed % 28) + 1;
+    const actualDay = (totalDaysElapsed % 7);
     const seasonIndex = Math.floor(totalDaysElapsed / 28) % 4; 
+
+    fetch('stats.txt')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('--');
+      }
+      return response.text();
+    })
+    .then(text => {
+      const lines = text.split('\n'); 
+
+      clima = parseInt(lines[10]) || 0; 
+      suerte = parseInt(lines[19]) || 0; 
+    })
+    .catch(error => {
+      console.error('--');
+    });
     
-    document.getElementById("clock").innerHTML = `Día ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br> 
-                                                  ${seasons[seasonIndex]}`;
+    document.getElementById("clock").innerHTML = `${days[actualDay]} ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br> 
+                                                  ${seasons[seasonIndex]}, ${weather[clima]} <br>
+                                                  ${lucky[suerte]}`;
   }
 
   setInterval(updateClock, 1000);

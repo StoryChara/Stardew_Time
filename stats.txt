@@ -1,0 +1,20 @@
+Climas:
+1. Soleado
+2. Lluvioso
+3. Con mucho viento.
+4. Nublado
+5. Tormenta
+6. Nevado
+7. Lluvia Verde
+8. Lluvia Ácida
+↓ La opción acá abajo ↓
+1
+
+Pitonisa:
+1. Los espíritus están muy felices
+2. Los espíritus están de buen humor
+3. Los espíritus están neutros
+4. Los espíritus están molestos
+5. Los espíritus están muy descontentos
+↓ La opción acá abajo ↓
+1
