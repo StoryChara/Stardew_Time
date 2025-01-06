@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herrería de Shantal</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><i class="fa-solid fa-gavel"></i><br> Bienvenido a la<br> Herrería de Shantal </h1>
+
+    <img src="img/shantal/HERRERIA.png" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-mena" class="button">Menas</button>
+        <button id="btn-mejoras" class="button">Mejoras</button> 
+        <button id="btn-geodas" class="button">Geodas</button> 
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    mena = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/ORBES/COBRE.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/ORBES/HIERRO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">150</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/ORBES/CARBON.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">150</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/ORBES/ORO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">400</span>
+                </div>
+            </div>
+        </div>`;
+
+    mejoras = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/COBRE/1.png" class="image">
+                    <img src="img/shantal/MEJORAS/COBRE/2.png" class="image">
+                    <img src="img/shantal/MEJORAS/COBRE/3.png" class="image">
+                    <img src="img/shantal/MEJORAS/COBRE/4.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/COBRE.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">2000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/ACERO/1.png" class="image">
+                    <img src="img/shantal/MEJORAS/ACERO/2.png" class="image">
+                    <img src="img/shantal/MEJORAS/ACERO/3.png" class="image">
+                    <img src="img/shantal/MEJORAS/ACERO/4.png" class="image">
+                    <img src="img/shantal/MEJORAS/ACERO/5.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/HIERRO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">5000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/ORO/1.png" class="image">
+                    <img src="img/shantal/MEJORAS/ORO/2.png" class="image">
+                    <img src="img/shantal/MEJORAS/ORO/3.png" class="image">
+                    <img src="img/shantal/MEJORAS/ORO/4.png" class="image">
+                    <img src="img/shantal/MEJORAS/ORO/5.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/ORO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">10000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/IRIDIO/1.png" class="image">
+                    <img src="img/shantal/MEJORAS/IRIDIO/2.png" class="image">
+                    <img src="img/shantal/MEJORAS/IRIDIO/3.png" class="image">
+                    <img src="img/shantal/MEJORAS/IRIDIO/4.png" class="image">
+                    <img src="img/shantal/MEJORAS/IRIDIO/5.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/IRIDIO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">25000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/COBRE/5.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/COBRE.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">1000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/ACERO/6.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/HIERRO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">2500
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/ORO/6.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/ORO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">5000
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/MEJORAS/IRIDIO/6.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/shantal/MEJORAS/REQUISITOS/IRIDIO.png" class="image"> x5 <br>
+                        <img src="img/gold.png" class="image">12500
+                    </span>
+                </div>
+            </div>
+        </div>`;
+
+    geodas = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/shantal/GEODAS/1.png" class="image">
+                    <img src="img/shantal/GEODAS/2.png" class="image">
+                    <img src="img/shantal/GEODAS/3.png" class="image">
+                    <img src="img/shantal/GEODAS/4.png" class="image">
+                    <img src="img/shantal/GEODAS/5.png" class="image">
+                    <img src="img/shantal/GEODAS/6.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25</span>
+                </div>
+            </div>
+        </div>`;
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "mena") { storeElement.innerHTML = mena;
+        } else if (tipo === "mejoras") { storeElement.innerHTML = mejoras; 
+        } else if (tipo === "geodas") { storeElement.innerHTML = geodas; }
+    }
+
+    document.getElementById("btn-mena").addEventListener("click", function() { mostrarContenido("mena"); });
+    document.getElementById("btn-mejoras").addEventListener("click", function() { mostrarContenido("mejoras"); });
+    document.getElementById("btn-geodas").addEventListener("click", function() { mostrarContenido("geodas"); });
+</script>
