@@ -92,7 +92,7 @@ body {
     border-radius: 5px; /* Bordes redondeados */
     padding: 5px 10px; /* Espaciado */
     font-family: "PixelatedElegance"; /* Fuente */
-    font-size: 1.5rem; /* Tamaño de fuente */
+    font-size: 1.25rem; /* Tamaño de fuente */
     text-align: center; /* Alineación del texto */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
@@ -137,7 +137,7 @@ body {
 }
 
 .store .price {
-    font-size: 2rem; /* Ajusta el tamaño de fuente según sea necesario */
+    font-size: 1.78rem; /* Ajusta el tamaño de fuente según sea necesario */
     font-family: "StardewFont"; /* Usa la fuente que prefieras */
     color: #4b140e;
     margin-left: 25px; /* Espacio entre imágenes y precios */
@@ -149,6 +149,11 @@ body {
     height: auto; /* Mantener la proporción */
     margin-right: 5px; /* Espacio entre imágenes */
     align-items: center; 
+}
+
+.store .images {
+    text-align: right; 
+    width: 100%; 
 }
 
 .store .image2 {
