@@ -44,6 +44,7 @@ const buttons = [
     { name: "Shantal", href: "Shantal.html"},
     { name: "Lana", href: "Lana.html"},
     { name: "Alicia", href: "Alicia.html"},
+    { name: "Samael", href: "Samael.html"}
   ];
   
   function renderButtons(containerId) {
