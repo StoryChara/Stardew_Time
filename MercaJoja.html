@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MercaJoja</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><br><br><i class="fa-solid fa-shop"></i><br> Bienvenido al <br> MercaJoja </h1>
+
+    <img src="img/joja/Jojamart.png" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-semilla" class="button">Semillas</button>
+        <button id="btn-otro" class="button">Otros</button>
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    const seasonIndex = parseInt(localStorage.getItem("seasonIndex"), 10);
+    /*document.getElementById("clock").innerHTML = `${seasons[seasonIndex]}`*/
+
+    semilla_p = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/CHIVIRIA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/TULIPAN.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/JAZZ.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">37</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/AJO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">40</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/ARROZ.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">40</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/PATATA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">62</span>
+                </div> 
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/JUDIAS.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/COL RIZADA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">87</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/PRIMAVERA/COLIFLOR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">100</span>
+                </div>
+            </div>
+        </div>`;
+    
+    semilla_v = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/TRIGO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">12</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/CHILE.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">50</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/RABANO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">50</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/TOMATE.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">62</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/LENTEJUELA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">62</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/LUPULOS.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/MELON.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">100</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/AMAPOLA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/VERANO/GIRASOL.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+        </div>`;
+
+    semilla_o = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/TRIGO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">12</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/BERENJENA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/COL.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">62</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/ÑAME.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/UVA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/AMARANTO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">87</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/CALABAZA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/GIRASOL.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/MAIZ.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">187</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/FLOR HADA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">250</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTOÑO/CRANBERRY.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">300</span>
+                </div>
+            </div>
+        </div>`;
+
+    otro = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/joja/3.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">20</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/joja/1.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+    
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTRO/HIERBA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTRO/AZUCAR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTRO/HARINA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">125</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTRO/ARROZ.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">250</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/samael/OTRO/PARED.png" class="image">
+                    <img src="img/samael/OTRO/SUELOS.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">250</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/joja/4.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/joja/2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/joja/9.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">50000</span>
+                </div>
+            </div>
+        </div>`;
+
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "semilla_p") { storeElement.innerHTML = semilla_p; 
+        } else if (tipo === "semilla_v") { storeElement.innerHTML = semilla_v; 
+        } else if (tipo === "semilla_o") { storeElement.innerHTML = semilla_o; 
+        } else if (tipo === "otro") { storeElement.innerHTML = otro; 
+        } else if (tipo === "mochila") { storeElement.innerHTML = mochila; }
+    }
+
+    document.getElementById("btn-semilla").addEventListener("click", function() { 
+        if (seasonIndex === 0){ mostrarContenido("semilla_p"); 
+        } else if (seasonIndex === 1){ mostrarContenido("semilla_v"); 
+        } else if (seasonIndex === 2) { mostrarContenido("semilla_o");  }
+    });
+    document.getElementById("btn-otro").addEventListener("click", function() { mostrarContenido("otro"); });
+
+    //mostrarContenido("semilla_o");
+</script>
