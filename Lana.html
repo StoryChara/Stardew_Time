@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Pesca</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><br><br><i class="fa-solid fa-fish-fins"></i></i><br> Bienvenido a la<br> Tienda de Pesca </h1>
+
+    <img src="img/lana/pesca.png" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-cañas" class="button">Cañas</button>
+        <button id="btn-cebos" class="button">Cebos/Anzuelos</button> 
+        <button id="btn-otros" class="button">Otros</button> 
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    /*
+    const currentSeason = localStorage.getItem("currentSeason");
+    document.getElementById("clock").innerHTML = `
+            ${currentSeason || "Temporada desconocida"}`*/
+
+    cañas = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CAÑAS/ENTRENAMIENTO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CAÑAS/BAMBU.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CAÑAS/VIDRIO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1800</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CAÑAS/IRIDIO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">7500</span>
+                </div>
+            </div>
+        </div>`;
+
+    cebos = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/CEBO 1.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">5</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/CEBO 2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">100</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/CEBO ESPECIAL.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">100</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/PLOMO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">200</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/GIRADOR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/SONAR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/TRAMPA C.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/CAZATESOROS.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">750</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/LIGERO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">750</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/GIRADOR 2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/IMAN.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/CEBOS/PUNZANTE.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+        </div>`;
+
+    otros = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/SOPA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">250</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/PECERA 1.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/PEZ COLGADO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/TRAMPA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/PECERA 2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">2000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/BATEA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">2500</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/PECERA 3.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">5000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/AHUMADOR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">10000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/lana/ITEM/CAMA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25000</span>
+                </div>
+            </div>
+        </div>`;
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "cañas") { storeElement.innerHTML = cañas;
+        } else if (tipo === "cebos") { storeElement.innerHTML = cebos; 
+        } else if (tipo === 'otros') { storeElement.innerHTML = otros; }
+    }
+
+    document.getElementById("btn-cañas").addEventListener("click", function() { mostrarContenido("cañas"); });
+    document.getElementById("btn-cebos").addEventListener("click", function() { mostrarContenido("cebos"); });
+    document.getElementById("btn-otros").addEventListener("click", function() { mostrarContenido("otros"); });
+
+    mostrarContenido("otros");
+</script>
