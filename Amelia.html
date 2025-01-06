@@ -12,7 +12,8 @@
 
     <h1 id="titulo"><i class="fa-solid fa-shop"></i><br> Bienvenido a la <br> Tienda de Amelia </h1>
 
-    
+    <img src="img/amelia/RANCHO.png" class="separator" alt="Separador">
+
     <div id="button-container" class="button-container">
         <button id="btn-animales" class="button">Animales</button>
         <button id="btn-objetos" class="button">Objetos</button> 
@@ -31,172 +32,166 @@
     const currentSeason = localStorage.getItem("currentSeason");
     document.getElementById("clock").innerHTML = `
             ${currentSeason || "Temporada desconocida"}`*/
+
     animales = `
-            <div class="store">
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/GALLINA.png" class="image">
-                        <img src="img/amelia/GALLINA 1.png" class="image">
-                        <img src="img/amelia/GALLINA 2.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">800</span>
-                    </div>
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/GALLINA.png" class="image">
+                    <img src="img/amelia/GALLINA 1.png" class="image">
+                    <img src="img/amelia/GALLINA 2.png" class="image">
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/VACA 1.png" class="image">
-                        <img src="img/amelia/VACA 2.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">1500</span>
-                    </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">800</span>
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CABRA.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">4000</span>
-                    </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/VACA 1.png" class="image">
+                    <img src="img/amelia/VACA 2.png" class="image">
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/PATO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">12000</span>
-                    </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1500</span>
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/OVEJA.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">8000</span>
-                    </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CABRA.png" class="image">
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CONEJO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">8000</span>
-                    </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">4000</span>
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CERDO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">16000</span>
-                    </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/PATO.png" class="image">
                 </div>
-            </div>`
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">12000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/OVEJA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">8000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CONEJO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">8000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CERDO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">16000</span>
+                </div>
+            </div>
+        </div>`;
         
     objetos = `
-            <div class="store">
+        <div class="store">
 
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/HENO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">50</span>
-                    </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/HENO.png" class="image">
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CUBETA.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">1000</span>
-                    </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">50</span>
                 </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/TIJERAS.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">1000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CALENTADOR.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">2000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CASA P 1.png" class="image">
-                        <img src="img/amelia/CASA P 2.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">10000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/PAJARERA.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">5000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/CATALOGO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">5000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/PACA DE HENO.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">250</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/RECOLECTOR.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">25000</span>
-                    </div>
-                </div>
-                <div class="product-row">
-                    <div class="images-column">
-                        <img src="img/amelia/RASCADOR G 1.png" class="image">
-                        <img src="img/amelia/RASCADOR G 2.png" class="image">
-                    </div>
-                    <div class="prices-column">
-                        <span class="price"><img src="img/gold.png" class="image">10000</span>
-                    </div>
-                </div>
-                
             </div>
-            `;
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/PACA DE HENO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">250</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CUBETA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/TIJERAS.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">1000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CALENTADOR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">2000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/PAJARERA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">5000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CATALOGO.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">5000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/CASA P 1.png" class="image">
+                    <img src="img/amelia/CASA P 2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">10000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/RECOLECTOR.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">25000</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/amelia/RASCADOR G 1.png" class="image">
+                    <img src="img/amelia/RASCADOR G 2.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">10000</span>
+                </div>
+            </div>
+            
+        </div>
+        `;
 
-        function mostrarContenido(tipo) {
-            const storeElement = document.getElementById("store");
-            if (tipo === "animales") {
-                storeElement.innerHTML = animales;
-            } else if (tipo === "objetos") {
-                storeElement.innerHTML = objetos;
-            }
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "animales") { storeElement.innerHTML = animales;
+        } else if (tipo === "objetos") { storeElement.innerHTML = objetos; 
         }
+    }
 
-    document.getElementById("btn-animales").addEventListener("click", function() {
-        mostrarContenido("animales");
-    });
-
-    document.getElementById("btn-objetos").addEventListener("click", function() {
-        mostrarContenido("objetos");
-    });
+    document.getElementById("btn-animales").addEventListener("click", function() { mostrarContenido("animales"); });
+    document.getElementById("btn-objetos").addEventListener("click", function() { mostrarContenido("objetos"); });
 </script>

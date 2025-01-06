@@ -52,6 +52,14 @@ body {
     font-size: 1.5rem; 
 }
 
+.separator {
+    display: block; /* Asegúrate de que se comporte como un bloque */
+    margin: 0px ; /* Centra la imagen y añade espaciado arriba y abajo */
+    width: 50%; /* O ajusta el ancho según sea necesario */
+    max-width: 50%; /* Limita el ancho máximo si es necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -71,7 +79,7 @@ body {
     color: white; /* Color del texto */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado */
+    padding: 5px 10px; /* Espaciado */
     font-family: "PixelatedElegance"; /* Fuente */
     font-size: 1.5rem; /* Tamaño de fuente */
     text-align: center; /* Alineación del texto */
