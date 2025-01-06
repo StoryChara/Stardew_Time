@@ -38,6 +38,7 @@ body {
     font-size: 3.5rem; 
     margin-bottom: 0px;
     text-shadow: 3px 3px 6px rgba(52, 13, 12, 0.267);
+    max-width: 90%;
 }
 
 .clock {
@@ -105,7 +106,7 @@ body {
 .store {
     display: flex;
     flex-direction: column; 
-    width: 85%; /* Tomar todo el ancho disponible */
+    width: 90%; /* Tomar todo el ancho disponible */
     align-items: center; /* Centra las filas dentro del contenedor */
 }
 
@@ -123,8 +124,10 @@ body {
 .store .images-column {
     flex: 50%; 
     display: flex;
-    justify-content: flex-end; /* Alinea las imágenes a la derecha */
+    justify-content: flex-end;
+    justify-content: wrap;
     align-items: center; 
+    flex-wrap: wrap;
 }
 
 .store .prices-column {
@@ -142,6 +145,14 @@ body {
 
 .store .image {
     max-height: 30px; /* Altura máxima de 5 píxeles */
+    width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
+    height: auto; /* Mantener la proporción */
+    margin-right: 5px; /* Espacio entre imágenes */
+    align-items: center; 
+}
+
+.store .image2 {
+    max-height: 60px; /* Altura máxima de 5 píxeles */
     width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
     height: auto; /* Mantener la proporción */
     margin-right: 5px; /* Espacio entre imágenes */

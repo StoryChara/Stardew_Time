@@ -15,7 +15,10 @@
     <img src="img/alicia/CARPINTERIA.png" class="separator" alt="Separador">
 
     <div id="button-container" class="button-container">
-        <button id="btn-" class="button">Proximamente</button>
+        <button id="btn-objetos" class="button">Objetos</button>
+        <button id="btn-recetas" class="button">Recetas</button>
+        <button id="btn-edificio" class="button">Edificios</button>
+        <button id="btn-mejora" class="button">Mejoras</button>
     </div>
 
 
@@ -25,47 +28,475 @@
     <script> renderButtons("render-button-container"); </script>
 
     <footer class="footer"></footer>
+    
 </body>
 </html>
 
 <script>
-    /*
-    const currentSeason = localStorage.getItem("currentSeason");
-    document.getElementById("clock").innerHTML = `
-            ${currentSeason || "Temporada desconocida"}`*/
-
-    cañas = `
+    objetos = `
         <div class="store">
-            <div class="product-row">
-                <div class="images-column">
-                    <img src="img/alicia/.png" class="image">
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/MADERA.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">10</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/PIEDRA.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">20</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/TRONCO 1.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">250</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/VENTANA.png" class="image">
+                <img src="img/alicia/PERMANENTE/OBJETOS/VENTANA 2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">300</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/TRONCO 2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">350</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/PLANTA.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">400</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/CAMA 2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">500</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/TV 1.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">700</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/TV 2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">750</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/ASTILLADORA.png" class="image">ㅤ
+                <img src="img/alicia/PERMANENTE/OBJETOS/CHIMENEA 3.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">1000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/CHIMENEA 2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">1500</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <div class="images-row">
+                    <img src="img/alicia/PERMANENTE/OBJETOS/CALENDARIO.png" class="image">ㅤ
+                    <img src="img/alicia/PERMANENTE/OBJETOS/TRABAJO.png" class="image">ㅤ
+                    <img src="img/alicia/PERMANENTE/OBJETOS/TEL.png" class="image">
                 </div>
-                <div class="prices-column">
-                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                <div class="images-row">
+                    <img src="img/alicia/PERMANENTE/OBJETOS/CAMA 3.png" class="image">ㅤ
+                    <img src="img/alicia/PERMANENTE/OBJETOS/CAMA 4.png" class="image">
                 </div>
             </div>
-        </div>`;
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">2000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/REFRI.png" class="image">ㅤ
+                <img src="img/alicia/PERMANENTE/OBJETOS/CHIMENEA 1.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">3000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/TV 3.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">4500</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/CAMA 1.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">6000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/PERMANENTE/OBJETOS/CATALOGO.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">200000</span>
+            </div>
+        </div>
+    </div>`;
 
-    cebos = `
+    recetas = `
+            <div class="store">
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/1.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">250</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/2.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">400</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/FAROLA 1.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/S 1.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/S 2.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/S 3.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">500</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/3.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/4.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">800</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/5.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/FAROLA 2.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/S 4.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/S 5.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">1000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/6.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">2000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/7.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">3000</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/8.png" class="image">ㅤ
+                <img src="img/RECETA.png" class="image">
+                <img src="img/alicia/PERMANENTE/RECETAS/COFRE.png" class="image">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">5000</span>
+            </div>
+        </div>
+    </div>`;
+
+    edificio = `
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="store">
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/ESTABLO.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">6000 <br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">350<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">150
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/ESTABLO 1.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">12000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">450<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">200
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/ESTABLO 2.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">25000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">550<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">300
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CORRAL.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">4000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">300<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">100
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CORRAL 1.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">10000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">400<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">150
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CORRAL 2.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">20000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">500<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">200
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/MOLINO.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">2500<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">50<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">150<br>
+                    <img src="img/alicia/REQ/Cloth.png" class="image">4
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CABAÑA.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">15000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">300
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CABAÑA 1.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">20000<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">550<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">300
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/SILO.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">100<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">100<br>
+                    <img src="img/alicia/REQ/Clay.png" class="image">10<br>
+                    <img src="img/alicia/REQ/Copper_Bar.png" class="image">5
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CRIADERO.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">10000<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">500<br>
+                    <img src="img/alicia/REQ/Refined_Quartz.png" class="image">10<br>
+                    <img src="img/alicia/REQ/Iridium_Bar.png" class="image">1
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CUADRA.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">10000<br>
+                    <img src="img/alicia/REQ/Hardwood.png" class="image">100<br>
+                    <img src="img/alicia/REQ/Iron_Bar.png" class="image">5
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/POZO.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">1000<br>
+                    <img src="img/alicia/REQ/Stone.png" class="image">75
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/ESTANQUE.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">5000<br>
+                    <img src="img/alicia/REQ/Seaweed.png" class="image">5<br>
+                    <img src="img/alicia/REQ/Green_Algae.png" class="image">5
+                </span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CABAÑAA.png" class="image2">ㅤ
+                <img src="img/alicia/EDIFICIOS/CABAÑAA 2.png" class="image2">ㅤ
+                <img src="img/alicia/EDIFICIOS/CABAÑAA 3.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price"><img src="img/gold.png" class="image">100</span>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="images-column">
+                <img src="img/alicia/EDIFICIOS/CUBO DE VENTA.png" class="image2">
+            </div>
+            <div class="prices-column">
+                <span class="price">
+                    <img src="img/gold.png" class="image">250<br>
+                    <img src="img/alicia/REQ/Wood.png" class="image">150
+                </span>
+            </div>
+        </div>
+    </div>`;
+
+    mejora = `
         <div class="store">
             <div class="product-row">
                 <div class="images-column">
-                    <img src="img/alicia/.png" class="image">
+                    <img src="img/alicia/MEJORAS/1.png" class="image2">
                 </div>
                 <div class="prices-column">
-                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                    <span class="price">
+                        <img src="img/gold.png" class="image">10000<br>
+                        <img src="img/alicia/REQ/Wood.png" class="image">450
+                    </span>
                 </div>
             </div>
-        </div>`;
-
-    otros = `
-        <div class="store">
             <div class="product-row">
                 <div class="images-column">
-                    <img src="img/alicia/.png" class="image">
+                    <img src="img/alicia/MEJORAS/2.png" class="image2">
                 </div>
                 <div class="prices-column">
-                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                    <span class="price">
+                        <img src="img/gold.png" class="image">65000<br>
+                        <img src="img/alicia/REQ/Hardwood.png" class="image">100
+                    </span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/alicia/MEJORAS/3.png" class="image2">
+                </div>
+                <div class="prices-column">
+                    <span class="price">
+                        <img src="img/gold.png" class="image">100000
+                    </span>
                 </div>
             </div>
         </div>`;
@@ -73,12 +504,16 @@
 
     function mostrarContenido(tipo) {
         const storeElement = document.getElementById("store");
-        if (tipo === "cañas") { storeElement.innerHTML = cañas;
-        } else if (tipo === "cebos") { storeElement.innerHTML = cebos; 
-        } else if (tipo === "otros") { storeElement.innerHTML = otros; }
+        if (tipo === "objetos") { storeElement.innerHTML = objetos;
+        } else if (tipo === "recetas") { storeElement.innerHTML = recetas; 
+        } else if (tipo === "edificio") { storeElement.innerHTML = edificio;
+        } else if (tipo === "mejora") { storeElement.innerHTML = mejora; }
     }
 
-    document.getElementById("btn-cañas").addEventListener("click", function() { mostrarContenido("cañas"); });
-    document.getElementById("btn-cebos").addEventListener("click", function() { mostrarContenido("cebos"); });
-    document.getElementById("btn-otros").addEventListener("click", function() { mostrarContenido("otros"); });
+    document.getElementById("btn-objetos").addEventListener("click", function() { mostrarContenido("objetos"); });
+    document.getElementById("btn-recetas").addEventListener("click", function() { mostrarContenido("recetas"); });
+    document.getElementById("btn-edificio").addEventListener("click", function() { mostrarContenido("edificio"); });
+    document.getElementById("btn-mejora").addEventListener("click", function() { mostrarContenido("mejora"); });
+
+    //mostrarContenido("mejora");
 </script>
