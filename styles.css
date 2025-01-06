@@ -23,6 +23,13 @@ body {
     align-items: center; 
     height: 100%; 
 }
+
+.footer {
+    height: 50px; /* Altura del footer */
+    width: 75%; /* Ancho completo */
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Espaciado interno */
+}
     
 #titulo {
     font-family: "StardewFont";
