@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpintería de Alicia</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><br><br><i class="fa-solid fa-hammer"></i><br> Bienvenido a la<br> Carpintería de Alicia </h1>
+
+    <img src="img/alicia/CARPINTERIA.png" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-" class="button">Proximamente</button>
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    /*
+    const currentSeason = localStorage.getItem("currentSeason");
+    document.getElementById("clock").innerHTML = `
+            ${currentSeason || "Temporada desconocida"}`*/
+
+    cañas = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/alicia/.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                </div>
+            </div>
+        </div>`;
+
+    cebos = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/alicia/.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                </div>
+            </div>
+        </div>`;
+
+    otros = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/alicia/.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">0</span>
+                </div>
+            </div>
+        </div>`;
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "cañas") { storeElement.innerHTML = cañas;
+        } else if (tipo === "cebos") { storeElement.innerHTML = cebos; 
+        } else if (tipo === "otros") { storeElement.innerHTML = otros; }
+    }
+
+    document.getElementById("btn-cañas").addEventListener("click", function() { mostrarContenido("cañas"); });
+    document.getElementById("btn-cebos").addEventListener("click", function() { mostrarContenido("cebos"); });
+    document.getElementById("btn-otros").addEventListener("click", function() { mostrarContenido("otros"); });
+</script>
