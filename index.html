@@ -40,7 +40,7 @@
     const dayOfMonth = (totalDaysElapsed % 28) + 1;
     const actualDay = (totalDaysElapsed % 7);
     const seasonIndex = Math.floor(totalDaysElapsed / 28) % 4; 
-    localStorage.setItem("currentSeason", seasons[seasonIndex]);
+    localStorage.setItem("seasonIndex", seasonIndex);
 
     fetch('stats.txt')
     .then(response => {
