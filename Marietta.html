@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar de Marietta</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><i class="fa-solid fa-beer-mug-empty"></i><br> Bienvenido al<br> Bar de Marietta </h1>
+
+    <img src="img/marietta/BAR.png" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-comida" class="button">Comida</button>
+        <button id="btn-recetas" class="button">Recetas</button> 
+        <button id="btn-maquina" class="button">Máquina</button> 
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+</body>
+</html>
+
+<script>
+    /*
+    const currentSeason = localStorage.getItem("currentSeason");
+    document.getElementById("clock").innerHTML = `
+            ${currentSeason || "Temporada desconocida"}`*/
+
+    comida = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/PAN.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">120</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/ENSALADA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">220</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/ESPAGUETI.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">240</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/CAFE.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">300</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/CERVEZA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">400</span>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/PIZZA.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">600</span>
+                </div>
+            </div>
+        </div>`;
+
+    recetas = `
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/-.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">-00</span>
+                </div>
+            </div>
+        </div>`;
+
+    maquina = `
+        <img src="img/marietta/JOJA.png" class="separator" alt="Separador"> <br>
+        <div class="store">
+            <div class="product-row">
+                <div class="images-column">
+                    <img src="img/marietta/Joja_Cola.png" class="image">
+                </div>
+                <div class="prices-column">
+                    <span class="price"><img src="img/gold.png" class="image">75</span>
+                </div>
+            </div>
+        </div>`;
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "comida") { storeElement.innerHTML = comida;
+        } else if (tipo === "recetas") { storeElement.innerHTML = recetas; 
+        } else if (tipo === 'maquina') { storeElement.innerHTML = maquina; }
+    }
+
+    document.getElementById("btn-comida").addEventListener("click", function() { mostrarContenido("comida"); });
+    document.getElementById("btn-recetas").addEventListener("click", function() { mostrarContenido("recetas"); });
+    document.getElementById("btn-maquina").addEventListener("click", function() { mostrarContenido("maquina"); });
+</script>

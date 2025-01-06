@@ -55,9 +55,10 @@ body {
 .separator {
     display: block; /* Asegúrate de que se comporte como un bloque */
     margin: 0px ; /* Centra la imagen y añade espaciado arriba y abajo */
-    width: 50%; /* O ajusta el ancho según sea necesario */
-    max-width: 50%; /* Limita el ancho máximo si es necesario */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 150px; /* Altura máxima de 5 píxeles */
+    width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
+    height: auto; /* Mantener la proporción */
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {

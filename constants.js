@@ -38,7 +38,8 @@ const lucky = [
 
 const buttons = [
     { name: "Home", href: "index.html" },
-    { name: "Amelia", href: "Amelia.html" }
+    { name: "Amelia", href: "Amelia.html" },
+    { name: "Marietta", href: "Marietta.html"}
   ];
   
   function renderButtons(containerId) {
