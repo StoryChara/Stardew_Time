@@ -37,14 +37,14 @@ const lucky = [
 ];
 
 const buttons = [
-    { name: "Home", href: "index.html" },
-    { name: "Amelia", href: "Amelia.html" },
-    { name: "Marietta", href: "Marietta.html"},
-    { name: "Haru", href: "Haru.html"},
-    { name: "Shantal", href: "Shantal.html"},
-    { name: "Lana", href: "Lana.html"},
-    { name: "Alicia", href: "Alicia.html"},
-    { name: "Samael", href: "Samael.html"}, 
+    { name: "Inicio", href: "index.html" },
+    { name: "Granja", href: "Amelia.html" },
+    { name: "Bar", href: "Marietta.html"},
+    { name: "Clínica", href: "Haru.html"},
+    { name: "Herrería", href: "Shantal.html"},
+    { name: "Pescadería", href: "Lana.html"},
+    { name: "Carpintería", href: "Alicia.html"},
+    { name: "Tienda", href: "Samael.html"}, 
     { name: "MercaJoja", href: "MercaJoja.html"}
   ];
   
