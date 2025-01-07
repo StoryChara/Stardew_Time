@@ -157,7 +157,7 @@ body {
 }
 
 .store .image2 {
-    max-height: 60px; /* Altura máxima de 5 píxeles */
+    max-height: 75px; /* Altura máxima de 5 píxeles */
     width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
     height: auto; /* Mantener la proporción */
     margin-right: 5px; /* Espacio entre imágenes */
