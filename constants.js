@@ -45,7 +45,8 @@ const buttons = [
     { name: "Pescadería", href: "Lana.html"},
     { name: "Carpintería", href: "Alicia.html"},
     { name: "Tienda", href: "Samael.html"}, 
-    { name: "MercaJoja", href: "MercaJoja.html"}
+    { name: "MercaJoja", href: "MercaJoja.html"},
+    { name: "Gremio", href: "Gremio.html"}
   ];
   
   function renderButtons(containerId) {

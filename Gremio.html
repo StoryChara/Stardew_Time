@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gremio de Aventureros</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><i class="fa-solid fa-skull"></i><br> Bienvenido al<br> Gremio de Aventureros </h1>
+
+    <img src="img/gremio/GREMIO.gif" class="separator" alt="Separador">
+
+    <div id="button-container" class="button-container">
+        <button id="btn-anillo" class="button">Anillo</button>
+        <button id="btn-arma" class="button">Armas</button> 
+        <button id="btn-calzado" class="button">Calzado</button> 
+        <button id="btn-otro" class="button">Otro</button>
+        <button id="btn-misiones" class="button">Misiones</button>
+    </div>
+
+
+    <div class="store" id="store"></div>
+
+  </div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    /*
+    const currentSeason = localStorage.getItem("currentSeason");
+    document.getElementById("clock").innerHTML = `
+            ${currentSeason || "Temporada desconocida"}`*/
+
+    anillo = `
+      <div class="store">
+      <div class="product-row">
+          <div class="images-column">
+              <img src="img/gremio/TIENDA/ANILLOS/AMATISTA.png" class="image">ㅤ
+              <img src="img/gremio/TIENDA/ANILLOS/TOPACIO.png" class="imgae">
+          </div>
+          <div class="prices-column">
+              <span class="price"><img src="img/gold.png" class="image">1000</span>
+          </div>
+      </div>
+      <div class="product-row">
+        <div class="images-column">
+            <img src="img/gremio/TIENDA/ANILLOS/ACUAMARINA.png" class="image">ㅤ
+            <img src="img/gremio/TIENDA/ANILLOS/JADE.png" class="imgae">
+        </div>
+        <div class="prices-column">
+            <span class="price"><img src="img/gold.png" class="image">2500</span>
+        </div>
+    </div>
+    <div class="product-row">
+      <div class="images-column">
+          <img src="img/gremio/TIENDA/ANILLOS/ESMERALDA.png" class="image">ㅤ
+          <img src="img/gremio/TIENDA/ANILLOS/RUBI.png" class="imgae">
+      </div>
+      <div class="prices-column">
+          <span class="price"><img src="img/gold.png" class="image">5000</span>
+      </div>
+  </div>`;
+
+    arma = `
+      <div class="store">
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/ESPADA.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">250</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/MUNICION.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">300</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/PUÑAL.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/ARMAS/TIRACHINAS.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">500</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/SABLE.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">750</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/SABLE P.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">850</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/TIRACHINAS MAESTRO.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">1000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/ALFANJE.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">1500</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/MAZA.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/ARMAS/CLAYMORE.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">2000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/TEMPLARIO.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">4000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/ESPADA 1.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">6000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/BRACAMANTE.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">9000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/KATANA LAVA.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">25000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/DAGA G.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">35000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/ESPADA G.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">50000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/ARMAS/MARTILLO G.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">75000</span>
+              </div>
+          </div>
+      </div>`;
+
+    calzado = `
+      <div class="store">
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/DEPORTIVAS.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">500</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS 1.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">750</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS COMBATE.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">1250</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS ROJAS.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">2000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS OSCURAS.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">2500</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/CALZADO/BOTAS ESPACIALES.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">5000</span>
+              </div>
+          </div>
+      </div>`;
+
+    otro = `
+      <div class="store">
+        <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/EXTRA/ESPADA PARED.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">2000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/TIENDA/EXTRA/CABEZA INSECTO.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/EXTRA/ESPADA DECORATIVA.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">10000</span>
+              </div>
+          </div>
+          <div class="product-row">
+              <div class="images-column">
+                <span class="images">
+                  <img src="img/gremio/TIENDA/EXTRA/MASCARA.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/EXTRA/CASCO CABALLERO.png" class="image">
+                  <br>
+                  <img src="img/gremio/TIENDA/EXTRA/CASCO.png" class="image">ㅤ
+                  <img src="img/gremio/TIENDA/EXTRA/SOMBRERO.png" class="image">
+                </span>
+              </div>
+              <div class="prices-column">
+                  <span class="price"><img src="img/gold.png" class="image">20000</span>
+              </div>
+          </div>
+      </div>`;
+    
+    misiones_ = `
+      <div class="store">
+          <div class="product-row">
+              <div class="images-column">
+                  <img src="img/gremio/.png" class="image">
+              </div>
+              <div class="prices-column">
+                  <span class="price">
+                    <img src="img/gold.png" class="image">25
+                  </span>
+              </div>
+          </div>
+      </div>`;
+
+    misiones = `
+      <div class="store">
+          <div class="product-row">
+              <div class="prices-column">
+                  <span class="price">
+                    Proximamente
+                  </span>
+              </div>
+          </div>
+      </div>`;
+        
+
+    function mostrarContenido(tipo) {
+        const storeElement = document.getElementById("store");
+        if (tipo === "anillo") { storeElement.innerHTML = anillo;
+        } else if (tipo === "arma") { storeElement.innerHTML = arma; 
+        } else if (tipo === "calzado") { storeElement.innerHTML = calzado; 
+        } else if (tipo === "otro") { storeElement.innerHTML = otro;  
+        } else if (tipo === "misiones") { storeElement.innerHTML = misiones; }
+    }
+
+    document.getElementById("btn-anillo").addEventListener("click", function() { mostrarContenido("anillo"); });
+    document.getElementById("btn-arma").addEventListener("click", function() { mostrarContenido("arma"); });
+    document.getElementById("btn-calzado").addEventListener("click", function() { mostrarContenido("calzado"); });
+    document.getElementById("btn-otro").addEventListener("click", function() { mostrarContenido("otro"); });
+    document.getElementById("btn-misiones").addEventListener("click", function() { mostrarContenido("misiones"); });
+
+    //mostrarContenido("misiones");
+</script>
