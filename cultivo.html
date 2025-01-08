@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de Cultivo</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="constants.js"></script>
+
+    <h1 id="titulo"><i class="fa-solid fa-apple-whole"></i><br> Ruleta de Cultivo </h1>
+
+    <div class="clock" id="clock">Selecciona el fetilizante usado en el cultivo: </div>
+
+    <div id="button-container" class="button-container">
+        <button id="btn-normal" class="button">Sin</button>
+        <button id="btn-basico" class="button">Básico</button>
+        <button id="btn-deluxe" class="button">Deluxe</button>
+        <button id="btn-lujo" class="button">Lujo</button>
+    </div>
+
+    <div class="probabilidad" id="probabilidad"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+</body>
+</html>
+
+<script>
+    const seasonIndex = parseInt(localStorage.getItem("seasonIndex"), 10);
+    /*document.getElementById("clock").innerHTML = `${seasons[seasonIndex]}`*/
+
+    const normal = [0.70, 0.15, 0.10, 0.05];
+    const basico = [0.40, 0.30, 0.20, 0.10];
+    const deluxe = [0.25, 0.35, 0.30, 0.10];
+    const lujo   = [0.00, 0.40, 0.40, 0.20];
+    const resultado = ["Normal", "Plata", "Oro", "Iridio"];
+
+
+    function mostrarContenido(prob) {
+        const storeElement = document.getElementById("probabilidad");
+        const randomNumber = Math.random();
+        let selectedIndex = 0; let probAc = 0;
+
+        for (const index in prob){
+            probAc += prob[index];
+            if (randomNumber > probAc) { continue; }
+            else { selectedIndex = index; break; }
+        }
+        storeElement.innerHTML = `¡El cultivo es de calidad de ${resultado[selectedIndex]}!`;
+    }
+
+    document.getElementById("btn-normal").addEventListener("click", function() { mostrarContenido(normal); });
+    document.getElementById("btn-basico").addEventListener("click", function() { mostrarContenido(basico); });
+    document.getElementById("btn-deluxe").addEventListener("click", function() { mostrarContenido(deluxe); });
+    document.getElementById("btn-lujo"  ).addEventListener("click", function() { mostrarContenido(lujo);   });
+
+    //mostrarContenido(lujo);
+</script>
