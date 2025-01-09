@@ -127,7 +127,7 @@
         let item = `-`;
         let opciones = [];
 
-        const esta = seasons[seasonIndex];
+        let esta = seasons[seasonIndex];
         clima = weather[clima];
         let hora = '--';
 
@@ -136,29 +136,37 @@
         } else if ((20<=hours && hours<=24) || (0<=hours && hours<=2)){ hora = 'Noche';
         } else { hora = 'Madrugada'; }
 
-        const randomNumber = Math.random();
+        const randomNumber = Math.random().toFixed(2);
 
         if (randomNumber <= 0.25){
           resultado = `¡El pescado ha escapado!`
         } else if (randomNumber <= 0.55) {
           resultado = `¡Has pescado ${obtenerElementoAleatorio(basura).name}!`
         } else {
-          const pescadosFiltrados = pescados.filter((pescado) => 
-            pescado.ubi.split(" ").includes(lugar) && 
-            (pescado.hora.includes(hora) || pescado.hora === "Todas") &&
-            (pescado.esta.includes(esta) || pescado.esta === "Todas") &&
-            (pescado.clima.includes(clima) || pescado.clima === "Todas")
-          );
+          let pescadosFiltrados;
+
+          if (lugar === "Isla Jengibre") {
+              pescadosFiltrados = pescados.filter((pescado) =>
+                  pescado.ubi.includes("Isla Jengibre")
+              );
+          } else {
+              pescadosFiltrados = pescados.filter((pescado) =>
+                  pescado.ubi.split(" ").includes(lugar) &&
+                  (pescado.hora.includes(hora) || pescado.hora === "Todas") &&
+                  (pescado.esta.includes(esta) || pescado.esta === "Todas") &&
+                  (pescado.clima.includes(clima) || pescado.clima === "Todas")
+              );
+          }
 
           if (pescadosFiltrados.length > 0) {
-              const pescadoAleatorio = obtenerElementoAleatorio(pescadosFiltrados);
-              resultado = `¡Has pescado un ${pescadoAleatorio.name}! `;
+              resultado = `¡Has pescado un ${obtenerElementoAleatorio(pescadosFiltrados).name}!`;
           } else {
               resultado = `No hay pescados disponibles en esta ubicación, hora, estación o clima.`;
           }
         }
         
-        storeElement.innerHTML = `${resultado}`;  
+        storeElement.innerHTML = `${resultado}
+        `;  
       }
 
       document.getElementById("mostrar").addEventListener("click", () => { 
@@ -167,9 +175,3 @@
     </script>
 </body>
 </html>
-
-
-<script>
-
-    
-</script>

@@ -178,6 +178,10 @@ body {
     text-align: justify; /* Justifica el texto */
 }
 
+.probabilidad .number {
+    font-size: 1rem;
+}
+
 .selector-container {
     font-family: "PixelatedElegance";
     margin: 20px;

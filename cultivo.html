@@ -43,7 +43,7 @@
 
     function mostrarContenido(prob) {
         const storeElement = document.getElementById("probabilidad");
-        const randomNumber = Math.random();
+        const randomNumber = Math.random().toFixed(2);;
         let selectedIndex = 0; let probAc = 0;
 
         for (const index in prob){
@@ -51,7 +51,8 @@
             if (randomNumber > probAc) { continue; }
             else { selectedIndex = index; break; }
         }
-        storeElement.innerHTML = `¡El cultivo es de calidad de ${resultado[selectedIndex]}!`;
+        storeElement.innerHTML = `¡El cultivo es de calidad de ${resultado[selectedIndex]}!
+        <div class="number">${randomNumber}</div`;
     }
 
     document.getElementById("btn-normal").addEventListener("click", function() { mostrarContenido(normal); });
