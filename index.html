@@ -40,7 +40,6 @@
     const dayOfMonth = (totalDaysElapsed % 28) + 1;
     const actualDay = (totalDaysElapsed % 7);
     const seasonIndex = Math.floor(totalDaysElapsed / 28) % 4; 
-    localStorage.setItem("seasonIndex", seasonIndex);
 
     fetch('stats.txt')
     .then(response => {
@@ -60,6 +59,10 @@
     .catch(error => {
       console.error('--');
     });
+
+    localStorage.setItem("seasonIndex", seasonIndex);
+    localStorage.setItem("hours", hours);
+    localStorage.setItem("clima", clima);
     
     document.getElementById("clock").innerHTML = `${seasons[seasonIndex]} <br>
                                                   ${days[actualDay]} ${String(dayOfMonth).padStart(2, "0")}, ${hours}:${minutes} <br>                                               

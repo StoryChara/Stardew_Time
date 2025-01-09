@@ -61,4 +61,3 @@ const buttons = [
       container.appendChild(a);
     });
   }
-  

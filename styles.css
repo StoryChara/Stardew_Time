@@ -177,3 +177,60 @@ body {
     font-size: 2rem;
     text-align: justify; /* Justifica el texto */
 }
+
+.selector-container {
+    font-family: "PixelatedElegance";
+    margin: 20px;
+    padding: 15px;
+    background-color: rgba(255, 225, 225, 0.5); 
+    border: 1px solid #6a1f16;
+    border-radius: 8px;
+    font-family: "Arial", sans-serif;
+    text-align: center;
+}
+
+#ubicaciones {
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "PixelatedElegance";
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.61); 
+    color: #6a1f16;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#mostrar {
+    padding: 10px 20px; /* Tamaño del botón */
+    font-size: 1rem;
+    background-color: #6a1f16; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Muestra el cursor de mano */
+}
+
+#mostrar:hover {
+    background-color: #8b2a20; /* Color al pasar el mouse */
+}
+
+.selector-container select {
+    font-family: "PixelatedElegance";
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #6a1f16;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.selector-container button {
+    font-family: "PixelatedElegance";
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

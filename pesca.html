@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de Pesca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="master.js"></script>
+</head>
+<body>
+    <h1 id="titulo"><i class="fa-solid fa-fish"></i><br> Ruleta de Pesca </h1>
+
+    <div class="clock" id="clock">Selecciona el sitio de la pesca: </div>
+
+    <div class="selector-container">
+      <select id="ubicaciones"></select>
+      <button id="mostrar">Mostrar Selección</button>
+      <div id="output" class="output"></div>
+    </div>
+
+    <div class="probabilidad" id="probabilidad"></div>
+
+    <div id="render-button-container" class="button-container"></div>
+    <script> renderButtons("render-button-container"); </script>
+
+    <footer class="footer"></footer>
+
+    <script>
+      const pescados = [
+        { name: "Besugo", ubi: "Rio", hora: "Noche", esta: "Todas", clima: "Todas" },
+        { name: "Perca", ubi: "Lago", hora: "Mañana Tarde", esta: "Todas", clima: "Todas" },
+        { name: "Carpa", ubi: "Lago Estanque Cloacas", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Pez Fantasma", ubi: "Minas", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Pez Piedra", ubi: "Minas", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Pez Carámbano", ubi: "Minas", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Anguila de Lava", ubi: "Minas Mazmorra", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Lenguado", ubi: "Desierto", hora: "Noche", esta: "Todas", clima: "Todas" },
+        { name: "Carpa Escorpión", ubi: "Desierto", hora: "Noche", esta: "Todas", clima: "Todas" },
+        { name: "Siluro", ubi: "Lago", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Barbo", ubi: "Rio Lago", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Muyu", ubi: "Estanque", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Salmón Sombrío", ubi: "Pantano", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Babolín", ubi: "Madriguera", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Mantarraya", ubi: "Isla Jengibre", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Pez León", ubi: "Isla Jengibre", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Pez Disco", ubi: "Isla Jengibre", hora: "Todas", esta: "Todas", clima: "Todas" },
+        { name: "Salmón", ubi: "Río", hora: "Mañana Tarde", esta: "Otoño", clima: "Todas" },
+        { name: "Pepino de Mar", ubi: "Oceano", hora: "Mañana Tarde", esta: "Otoño Invierno", clima: "Todas" },
+        { name: "Trucha Tigre", ubi: "Rio", hora: "Mañana Tarde", esta: "Otoño Invierno", clima: "Todas" },
+        { name: "Atún Blanco", ubi: "Oceano", hora: "Mañana Noche", esta: "Otoño Invierno", clima: "Todas" },
+        { name: "Lucio", ubi: "Rio Bosque Lago", hora: "Tarde Noche", esta: "Otoño", clima: "Lluvia" },
+        { name: "Carpa de Medianoche", ubi: "Lago Bosque Isla Jengibre", hora: "Noche", esta: "Otoño Invierno", clima: "Todas" },
+        { name: "Anchoa", ubi: "Oceano", hora: "Todas", esta: "Primavera Otoño", clima: "Todas" },
+        { name: "Lubina", ubi: "Rio Estanque", hora: "Todas", esta: "Primavera Otoño", clima: "Todas" },
+        { name: "Anguila", ubi: "Oceano", hora: "Tarde Noche", esta: "Primavera Otoño", clima: "Lluvia" },
+        { name: "Pez Gato", ubi: "Rio Estanque Pantano", hora: "Mañana", esta: "Primavera Otoño", clima: "Lluvia" },
+        { name: "Sardina", ubi: "Oceano", hora: "Mañana Tarde", esta: "Primavera Otoño Invierno", clima: "Todas" },
+        { name: "Pez Sol", ubi: "Rio", hora: "Mañana Tarde", esta: "Primavera Verano", clima: "Soleado Viento"},
+        { name: "Platija", ubi: "Oceano Isla Jengibre", hora: "Mañana Tarde", esta: "Primavera Verano", clima: "Todas"},
+        { name: "Sábalo", ubi: "Rio", hora: "Todas", esta: "Primavera Verano Otoño", clima: "Lluvia"},
+        { name: "Palometa", ubi: "Bosque", hora: "Todas", esta: "Primavera Verano Otoño", clima: "Todas"},
+        { name: "Fletán", ubi: "Oceano", hora: "Mañana Noche", esta: "Primavera Verano Invierno", clima: "Todas"},
+        { name: "Arenque", ubi: "Oceano", hora: "Todas", esta: "Primavera Invierno", clima: "Todas"},
+        { name: "Trucha Arcoíris", ubi: "Rio Lago", hora: "Mañana Tarde", esta: "Verano", clima: "Soleado"},
+        { name: "Pulpo", ubi: "Oceano", hora: "Mañana", esta: "Verano", clima: "Todas"},
+        { name: "Dorado", ubi: "Rio", hora: "Mañana Tarde", esta: "Verano", clima: "Todas"},
+        { name: "Pez Globo", ubi: "Oceano Isla Jengibre", hora: "Tarde", esta: "Verano", clima: "Soleado"},
+        { name: "Superpepino", ubi: "Oceano Isla Jengibre", hora: "Noche", esta: "Verano Otoño", clima: "Todas"},
+        { name: "Tilapia", ubi: "Oceano Isla Jengibre", hora: "Mañana", esta: "Verano Otoño", clima: "Todas"},
+        { name: "Pargo Colorado", ubi: "Oceano", hora: "Mañana Tarde", esta: "Verano Otoño", clima: "Lluvia"},
+        { name: "Sauri", ubi: "Rio Estanque", hora: "Todas", esta: "Verano Invierno", clima: "Todas"},
+        { name: "Salmonete", ubi: "Oceano", hora: "Mañana Tarde", esta: "Verano Invierno", clima: "Todas"},
+        { name: "Esturión", ubi: "Lago", hora: "Mañana Tarde", esta: "Verano Invierno", clima: "Todas"},
+        { name: "Atún", ubi: "Oceano Isla Jengibre", hora: "Mañana Tarde", esta: "Verano Invierno", clima: "Todas"},
+        { name: "Cachuelo", ubi: "Rio Bosque Lago", hora: "Todas", esta: "Invierno", clima: "Todas"},
+        { name: "Calamar", ubi: "Oceano", hora: "Noche", esta: "Invierno", clima: "Todas"},
+        { name: "Bacalao Largo", ubi: "Rio Lago", hora: "Todas", esta: "Invierno", clima: "Todas"},
+        { name: "Calamar de Medianoche", ubi: "Mercado", hora: "Todas", esta: "Todas", clima: "Todas"},
+        { name: "Pez Asustado", ubi: "Mercado", hora: "Todas", esta: "Todas", clima: "Todas"},
+        { name: "Pez Gota", ubi: "Mercado", hora: "Todas", esta: "Todas", clima: "Todas"},
+        { name: "Pez Carmesí", ubi: "Oceano", hora: "Todas", esta: "Verano", clima: "Todas"},
+        { name: "Hijo de Pez Carmesí", ubi: "Oceano", hora: "Todas", esta: "Verano", clima: "Todas"},
+        { name: "Rape", ubi: "Rio", hora: "Todas", esta: "Otoño", clima: "Todas"},
+        { name: "Sra. Angler", ubi: "Rio", hora: "Todas", esta: "Otoño", clima: "Todas"},
+        { name: "Leyenda", ubi: "Lago", hora: "Todas", esta: "Primavera", clima: "Lluvia"},
+        { name: "Leyenda II", ubi: "Lago", hora: "Todas", esta: "Primavera", clima: "Lluvia"},
+        { name: "Pez Glacial", ubi: "Bosque", hora: "Todas", esta: "Invierno", clima: "Todas"},
+        { name: "Pez Glacial Jovén", ubi: "Bosque", hora: "Todas", esta: "Invierno", clima: "Todas"},
+        { name: "Carpa Mutante", ubi: "Cloacas", hora: "Todas", esta: "Todas", clima: "Todas"},
+        { name: "Carpa Radioactiva", ubi: "Cloacas", hora: "Todas", esta: "Todas", clima: "Todas"}
+      ];
+
+      basura = [
+        { name: "Alga"},
+        { name: "Alga Verde"},
+        { name: "Alga Blanca"},
+        { name: "Basura"},
+        { name: "CD Roto"},
+        { name: "Gafas Rotas"},
+        { name: "Joja-Cola"},
+        { name: "Madera Flotante"},
+        { name: "Periódico Empapado"},
+        { name: "Planta Podrida"}
+      ];
+
+      const selectElement = document.getElementById("ubicaciones");
+      ubicaciones.forEach((ubicacion) => {
+          const option = document.createElement("option");
+          option.value = ubicacion;
+          option.textContent = ubicacion;
+          selectElement.appendChild(option);
+      });
+
+      function obtenerElementoAleatorio(arr) {
+        const indiceAleatorio = Math.floor(Math.random() * arr.length);
+        return arr[indiceAleatorio];
+      }
+
+      function mostrarContenido(lugar) {
+        const storeElement = document.getElementById("probabilidad");
+        const seasonIndex = parseInt(localStorage.getItem("seasonIndex"), 10);
+        const hours = parseInt(localStorage.getItem("hours"), 10);
+        let clima = parseInt(localStorage.getItem("clima", 10));
+
+        let resultado = `-`;
+        let item = `-`;
+        let opciones = [];
+
+        const esta = seasons[seasonIndex];
+        clima = weather[clima];
+        let hora = '--';
+
+        if (7<=hours && hours<=12){ hora = 'Mañana';
+        } else if (12<=hours && hours<=20){ hora = 'Tarde';
+        } else if ((20<=hours && hours<=24) || (0<=hours && hours<=2)){ hora = 'Noche';
+        } else { hora = 'Madrugada'; }
+
+        const randomNumber = Math.random();
+
+        if (randomNumber <= 0.25){
+          resultado = `¡El pescado ha escapado!`
+        } else if (randomNumber <= 0.55) {
+          resultado = `¡Has pescado ${obtenerElementoAleatorio(basura).name}!`
+        } else {
+          const pescadosFiltrados = pescados.filter((pescado) => 
+            pescado.ubi.split(" ").includes(lugar) && 
+            (pescado.hora.includes(hora) || pescado.hora === "Todas") &&
+            (pescado.esta.includes(esta) || pescado.esta === "Todas") &&
+            (pescado.clima.includes(clima) || pescado.clima === "Todas")
+          );
+
+          if (pescadosFiltrados.length > 0) {
+              const pescadoAleatorio = obtenerElementoAleatorio(pescadosFiltrados);
+              resultado = `¡Has pescado un ${pescadoAleatorio.name}! `;
+          } else {
+              resultado = `No hay pescados disponibles en esta ubicación, hora, estación o clima.`;
+          }
+        }
+        
+        storeElement.innerHTML = `${resultado}`;  
+      }
+
+      document.getElementById("mostrar").addEventListener("click", () => { 
+          const seleccion = selectElement.value;
+          mostrarContenido(seleccion);});
+    </script>
+</body>
+</html>
+
+
+<script>
+
+    
+</script>
