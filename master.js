@@ -1,6 +1,6 @@
 const buttons = [
   { name: "Home", href: "index.html" },
-  { name: "Master", href: "Master.html"},
+  { name: "Master", href: "master.html"},
   { name: "Cultivo", href: "cultivo.html" },
   { name: "Pesca", href: "pesca.html"}
 ];
