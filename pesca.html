@@ -164,6 +164,8 @@
               resultado = `No hay pescados disponibles en esta ubicación, hora, estación o clima.`;
           }
         }
+
+        resultado += `<br><div class="number">${randomNumber}</div>`
         
         storeElement.innerHTML = `${resultado}
         `;  
