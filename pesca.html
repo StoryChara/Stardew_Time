@@ -126,6 +126,7 @@
         let resultado = `-`;
         let item = `-`;
         let opciones = [];
+        let pescadosFiltrados;
 
         let esta = seasons[seasonIndex];
         clima = weather[clima];
@@ -143,7 +144,7 @@
         } else if (randomNumber <= 0.55) {
           resultado = `¡Has pescado ${obtenerElementoAleatorio(basura).name}!`
         } else {
-          let pescadosFiltrados;
+          
 
           if (lugar === "Isla Jengibre") {
               pescadosFiltrados = pescados.filter((pescado) =>

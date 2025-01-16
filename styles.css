@@ -182,6 +182,15 @@ body {
     font-size: 1rem;
 }
 
+.probabilidad .subtitle {
+    font-family: "StardewFont";
+    color: #6a1f16;
+    text-align: center;
+    font-size: 2.5rem; 
+    margin-bottom: 0px;
+    text-shadow: 3px 3px 6px rgba(52, 13, 12, 0.267);
+}
+
 .selector-container {
     font-family: "PixelatedElegance";
     margin: 20px;
